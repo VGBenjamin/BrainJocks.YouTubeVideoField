@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -23,6 +23,9 @@
     <Name>BrainJocks.YouTube.TDS.Core</Name>
     <RootNamespace>BrainJocks.YouTube.TDS.Core</RootNamespace>
     <SitecoreDatabase>core</SitecoreDatabase>
+    <EnableCodeGeneration>false</EnableCodeGeneration>
+    <ManageRoles>False</ManageRoles>
+    <AssemblyStatus>Exclude</AssemblyStatus>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -33,9 +36,11 @@
     <PackageVersion>1.0.0</PackageVersion>
     <PackageReadme>YouTube Video picker Field Type with support for Content Editor and Page Editor</PackageReadme>
     <SitecoreAssemblyPath>..\Libs\Sitecore</SitecoreAssemblyPath>
-    <GeneratePackage>True</GeneratePackage>
+    <GeneratePackage>False</GeneratePackage>
     <SeperateFilesAndItems>False</SeperateFilesAndItems>
     <AddDateTimeToPackageName>False</AddDateTimeToPackageName>
+    <PackageName>BrainJocks.YouTube.TDS.Core</PackageName>
+    <PackageExcludeCode>False</PackageExcludeCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Sandbox' ">
     <DebugSymbols>false</DebugSymbols>

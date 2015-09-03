@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -20,6 +20,9 @@
     <Name>BrainJocks.YouTube.TDS.Master</Name>
     <RootNamespace>BrainJocks.YouTube.TDS.Master</RootNamespace>
     <SitecoreDatabase>master</SitecoreDatabase>
+    <EnableCodeGeneration>false</EnableCodeGeneration>
+    <ManageRoles>False</ManageRoles>
+    <AssemblyStatus>Exclude</AssemblyStatus>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -172,6 +175,12 @@
     </SitecoreItem>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BrainJocks.YouTube.Web\BrainJocks.YouTube.Web.csproj">
+      <Project>{52fb88fe-be5d-4c31-aaec-666f1c9ee24e}</Project>
+      <Name>BrainJocks.YouTube.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <ExcludedAssemblies Include="Antlr3.Runtime.%2a" />
     <ExcludedAssemblies Include="BrainJocks.YouTube.Environment.%2a" />
     <ExcludedAssemblies Include="EntityFramework.%2a" />
@@ -184,11 +193,16 @@
     <ExcludedAssemblies Include="System.Web.Providers.dll" />
     <ExcludedAssemblies Include="System.Web.Razor.%2a" />
     <ExcludedAssemblies Include="System.Web.Routing.%2a" />
-    <ExcludedAssemblies Include="System.Web.WebPages.Deployment.%2a" />
     <ExcludedAssemblies Include="System.Web.WebPages.%2a" />
+    <ExcludedAssemblies Include="System.Web.WebPages.Deployment.%2a" />
     <ExcludedAssemblies Include="System.Web.WebPages.Razor.%2a" />
     <ExcludedAssemblies Include="Telerik.%2a" />
     <ExcludedAssemblies Include="WebGrease.%2a" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundledProject Include="..\BrainJocks.YouTube.TDS.Core\BrainJocks.YouTube.TDS.Core.scproj">
+      <ProjectId>{53ac25a0-db71-4853-8ad7-26520fad62a0}</ProjectId>
+    </BundledProject>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" />
 </Project>

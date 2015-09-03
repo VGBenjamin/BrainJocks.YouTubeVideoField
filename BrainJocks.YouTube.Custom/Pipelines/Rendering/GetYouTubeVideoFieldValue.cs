@@ -16,15 +16,20 @@ namespace BrainJocks.YouTube.Custom.Pipelines.Rendering
             if (fieldTypeKey != "youtubevideo") return;
 
             args.DisableWebEditContentEditing = true;
-
-            if (!Context.PageMode.IsPageEditorEditing) return;
-
             YouTubeVideoField video = args.GetField();
 
-            YouTubeVideoField.ThumbnailSize size;
-            Enum.TryParse(args.Parameters["Size"], out size); // default is Small
+            if (Context.PageMode.IsPageEditorEditing)
+            {
+                YouTubeVideoField.ThumbnailSize size;
+                Enum.TryParse(args.Parameters["Size"], out size); // default is Small
 
-            args.Result.FirstPart = YouTubeVideoField.FormatValueForPageEditorDisplay(video.Value, size);
+                args.Result.FirstPart = YouTubeVideoField.FormatValueForPageEditorDisplay(video.Value, size);
+            }
+            else
+            {
+                args.Result.FirstPart = video.FormatValueForNormalDisplay(video.Value);
+            }
+
         }
     }
 }

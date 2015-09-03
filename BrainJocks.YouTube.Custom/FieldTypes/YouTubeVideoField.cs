@@ -53,6 +53,34 @@ namespace BrainJocks.YouTube.Custom.FieldTypes
                     </script>"; }
         }
 
+        public string NormalMarkup
+        {
+            get
+            {
+                string playerName = $"player_{Guid.NewGuid().ToString("B")}";
+                return $@"                    
+                     <div id='{playerName}'></div>
+
+                    <script>
+                      // 2. This code loads the IFrame Player API code asynchronously.
+                      var tag = document.createElement('script');
+
+                      tag.src = 'https://www.youtube.com/iframe_api';
+                      var firstScriptTag = document.getElementsByTagName('script')[0];
+                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                      // 3. This function creates an <iframe> (and YouTube player)
+                      //    after the API code downloads.
+                      var player;
+                      function onYouTubeIframeAPIReady() {{
+	                    player = new YT.Player('{playerName}', {{
+	                      videoId: '{Video}'
+	                    }});
+                      }}
+                    </script>";
+            }
+        }
+
         public static implicit operator YouTubeVideoField(Field field)
         {
             return field != null ? new YouTubeVideoField(field) : null;
@@ -76,6 +104,13 @@ namespace BrainJocks.YouTube.Custom.FieldTypes
             return string.IsNullOrEmpty(rawValue)
                 ? Translate.Text("[No video selected]")
                 : string.Format(PreviewMarkup, Guid.NewGuid(), rawValue, GetThumbnailImageUrl(rawValue, size));
+        }
+
+        public string FormatValueForNormalDisplay(string rawValue)
+        {
+            return string.IsNullOrEmpty(rawValue)
+                ? string.Empty
+                : NormalMarkup;
         }
     }
 }

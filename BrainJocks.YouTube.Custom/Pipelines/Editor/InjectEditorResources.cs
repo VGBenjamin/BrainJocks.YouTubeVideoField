@@ -32,6 +32,7 @@ namespace BrainJocks.YouTube.Custom.Pipelines.Editor
             var page = context.Handler as Page;
             if (page == null) return;
 
+
             var pipelineArgs = args as RenderContentEditorArgs;
             if (pipelineArgs == null || pipelineArgs.Item == null) return;
 
