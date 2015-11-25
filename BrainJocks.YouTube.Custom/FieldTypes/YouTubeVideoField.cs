@@ -53,32 +53,38 @@ namespace BrainJocks.YouTube.Custom.FieldTypes
                     </script>"; }
         }
 
-        public string NormalMarkup
-        {
-            get
-            {
-                string playerName = $"player_{Guid.NewGuid().ToString("B")}";
-                return $@"                    
-                     <div id='{playerName}'></div>
+        public string GetNormalMarkup(byte autoHide = 2, bool autoPlay = false, byte controls = 1, bool loop = false, bool rel = false, bool showinfo = true, int start = 0)
+        {            
+            string playerName = $"player_{Guid.NewGuid().ToString("B")}";
+            return $@"                    
+                    <div id='{playerName}'></div>
 
-                    <script>
-                      // 2. This code loads the IFrame Player API code asynchronously.
-                      var tag = document.createElement('script');
+                <script>
+                    // 2. This code loads the IFrame Player API code asynchronously.
+                    var tag = document.createElement('script');
 
-                      tag.src = 'https://www.youtube.com/iframe_api';
-                      var firstScriptTag = document.getElementsByTagName('script')[0];
-                      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                    tag.src = 'https://www.youtube.com/iframe_api';
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-                      // 3. This function creates an <iframe> (and YouTube player)
-                      //    after the API code downloads.
-                      var player;
-                      function onYouTubeIframeAPIReady() {{
-	                    player = new YT.Player('{playerName}', {{
-	                      videoId: '{Video}'
-	                    }});
-                      }}
-                    </script>";
-            }
+                    // 3. This function creates an <iframe> (and YouTube player)
+                    //    after the API code downloads.
+                    var player;
+                    function onYouTubeIframeAPIReady() {{
+	                player = new YT.Player('{playerName}', {{
+	                    videoId: '{Video}',
+                        hl: '{Sitecore.Context.Language.CultureInfo.TwoLetterISOLanguageName}',
+                        modestbranding: 1,
+                        {(autoHide == 2 ? string.Empty : $"autohide: '{autoHide}',")}
+                        {(!autoPlay ? string.Empty : $"autoplay: '1',")}
+                        {(controls == 1 ? string.Empty : $"controls: '{controls}',")}
+                        {(!loop ? string.Empty : $"loop: '1',")}
+                        {(!rel ? string.Empty : $"rel: '1',")}
+                        {(showinfo ? string.Empty : $"showinfo: '0',")}
+                        {(start == 0 ? string.Empty : $"start: '{start}',")}
+	                }});
+                    }}
+                </script>";            
         }
 
         public static implicit operator YouTubeVideoField(Field field)
@@ -106,11 +112,11 @@ namespace BrainJocks.YouTube.Custom.FieldTypes
                 : string.Format(PreviewMarkup, Guid.NewGuid(), rawValue, GetThumbnailImageUrl(rawValue, size));
         }
 
-        public string FormatValueForNormalDisplay(string rawValue)
+        public string FormatValueForNormalDisplay(string rawValue, byte autoHide = 2, bool autoPlay = false, byte controls = 1, bool loop = false, bool rel = false, bool showinfo = true, int start = 0)
         {
             return string.IsNullOrEmpty(rawValue)
                 ? string.Empty
-                : NormalMarkup;
+                : GetNormalMarkup(autoHide, autoPlay, controls, loop, rel, showinfo, start);
         }
     }
 }

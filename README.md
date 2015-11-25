@@ -43,6 +43,22 @@ to render a default (small) thumbnail or:
 
 to specify the size of how you like the thumbnail rendered. 
 
+
+```
+@Html.Sitecore().Field("Video One", new { ParamName = Value})
+```
+
+to specify additional parameters from this doc https://developers.google.com/youtube/player_parameters
+We handle the following parameters:
+
+* autoHide
+* autoPlay
+* controls
+* loop
+* rel
+* showinfo
+* start
+
 > We are 100% MVC with Sitecore but the field type itself has no MVC dependency and can be as easily used with other rendering technologies
 
 The [TDS.Master](https://github.com/pveller/BrainJocks.YouTubeVideoField/tree/master/BrainJocks.YouTube.TDS.Master) and [TDS.Master.Content](https://github.com/pveller/BrainJocks.YouTubeVideoField/tree/master/BrainJocks.YouTube.TDS.Master.Content) projects have Sitecore definition items for a very basic demonstration. Install it on top of a vanilla Sitecore installation and your `Home` item will have two additional youtube fields and customized layout details ([layout](https://github.com/pveller/BrainJocks.YouTubeVideoField/blob/master/BrainJocks.YouTube.Web/Areas/Test/Views/Layouts/TestVideoFieldLayout.cshtml) and [rendering](https://github.com/pveller/BrainJocks.YouTubeVideoField/blob/master/BrainJocks.YouTube.Web/Areas/Test/Views/_TestVideoField.cshtml))

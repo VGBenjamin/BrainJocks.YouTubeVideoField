@@ -14,12 +14,12 @@ namespace BrainJocks.YouTube.Custom.Pipelines.Editor
 
         private static readonly string[] RemoteScriptsToInclude =
         {
-            "http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"
+            "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"
         };
 
         private static readonly string[] RemoteStylesToInclude =
         {
-            "http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css"
+            "//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css"
         };
 
         public void Process(PipelineArgs args)

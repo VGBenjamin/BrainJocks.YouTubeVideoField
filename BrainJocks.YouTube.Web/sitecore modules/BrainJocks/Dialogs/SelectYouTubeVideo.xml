@@ -6,9 +6,9 @@
 
       <Script Src="/sitecore/shell/Controls/Lib/jQuery/jquery.noconflict.js" Type="text/javascript" />
 
-      <Script Src="http://cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.0.0/dust-full.min.js" Type="text/javascript"/>
-      <Script Src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"  Type="text/javascript"/>
-      <Script Src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"  Type="text/javascript"/>
+      <Script Src="//cdnjs.cloudflare.com/ajax/libs/dustjs-linkedin/2.0.0/dust-full.min.js" Type="text/javascript"/>
+      <Script Src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"  Type="text/javascript"/>
+      <Script Src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"  Type="text/javascript"/>
      
       <Script Src="/sitecore modules/BrainJocks/resources/brainjocks.youtubesearch.driver.js" Type="text/javascript" />
       <Script Src="/sitecore modules/BrainJocks/resources/brainjocks.youtubesearch.dustview.js" Type="text/javascript" />
